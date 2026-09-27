@@ -21,6 +21,9 @@
         <a href="#articles">文章</a>
         <a href="#categories">分类</a>
         <a href="#about">关于我</a>
+        <a href="javascript:void(0)" id="openSearchBtn" class="nav-link" style="margin-left: 20px; display: flex; align-items: center;">
+            <span>🔍 搜索</span> 
+        </a>
       </nav>
       <button class="menu-toggle" aria-label="打开菜单" aria-expanded="false">☰</button>
     </header>
@@ -68,9 +71,6 @@
     
     <!-- 这里使用和你文章列表一样的 grid 布局 -->
     <div class="article-grid">
-        <div class="search-wrapper">
-    <input type="text" id="blogSearchInput" placeholder="Search in 0x90...">
-        </div>
         <!-- 友链卡片 1 -->
         <article class="article-card searchable-item">
             <div class="card-visual visual-purple">
@@ -121,5 +121,18 @@
 
     <footer><span>© 2026 Monopolize</span><span>Built with curiosity &amp; coffee.</span><div><a href="#">GitHub</a><a href="#">RSS</a></div></footer>
     <script src="script.js"></script>
+    <!-- 👇 搜索弹窗层 (默认隐藏) -->
+<div id="searchModal" class="search-modal-overlay">
+    <div class="search-modal-content">
+        <div class="search-header">
+            <span>搜索</span>
+            <span id="closeSearchBtn" class="close-icon">×</span>
+        </div>
+        <input type="text" id="modalSearchInput" placeholder="来搜吧来搜吧~">
+        <div id="searchResults" class="search-results-list">
+            <!-- 搜索结果会显示在这里 -->
+        </div>
+    </div>
+</div>
   </body>
 </html>
