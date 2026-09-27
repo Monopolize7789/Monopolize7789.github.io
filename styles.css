@@ -3,8 +3,12 @@
 /* --- 顶部导航栏的搜索按钮微调 --- */
 .nav-link {
     cursor: pointer;
-    display: flex;
-    align-items: center;
+    text-decoration: none; /* 去掉下划线 */
+    color: inherit;        /* 继承文字颜色，保证和别的菜单一样黑/白 */
+    font-size: inherit;    /* 保证字号一样大 */
+    margin-left: 20px;     /* 【关键】给它左边加个间距，或者用 padding */
+    display: inline-block; /* 【关键】改回 inline-block，让它乖乖排队 */
+    vertical-align: middle;/* 垂直居中对齐 */
 }
 
 /* --- 搜索弹窗背景 (遮罩层) --- */
