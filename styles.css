@@ -135,8 +135,29 @@
     margin: 0 15px; /* 左右间距，你可以根据实际情况调整这个数值 */
     cursor: pointer;
 }
-
 /* 鼠标悬停时的效果，最好也和别的菜单保持一致 */
 .nav-link:hover {
     opacity: 0.7; /* 或者改成你网站特有的高亮色 */
+}
+/* --- 手机端菜单强制对齐修复 --- */
+@media (max-width: 768px) {
+    /* 1. 找到承载菜单的容器（根据你的截图，可能是 .mobile-nav 或 ul） */
+    /* 这里假设你的菜单项都在一个列表里 */
+    .mobile-nav a, 
+    .nav-list a, 
+    #openSearchBtn {
+        display: block !important;      /* 强制占满一行 */
+        text-align: left !important;    /* 强制文字靠左 */
+        padding-left: 0 !important;     /* 【关键】清除左侧缩进 */
+        margin-left: 0 !important;      /* 【关键】清除左侧外边距 */
+        width: 100%;                    /* 宽度拉满 */
+        box-sizing: border-box;         /* 防止宽度计算溢出 */
+    }
+
+    /* 2. 如果“搜索”是在 <li> 里，也要把 li 的缩进清掉 */
+    .mobile-nav li, 
+    .nav-list li {
+        padding-left: 0 !important;
+        margin-left: 0 !important;
+    }
 }
