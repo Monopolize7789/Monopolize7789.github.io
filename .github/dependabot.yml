@@ -1,0 +1,7 @@
+version: 2
+updates:
+  - package-ecosystem: "npm" # 改成你实际使用的包管理器，如 pip, maven, github-actions 等
+    directory: "/" # 通常是根目录，如果你的 package.json 在子目录，比如 /frontend，就填 "/frontend"
+    schedule:
+      interval: "weekly" # 检查频率：daily, weekly, monthly
+    open-pull-requests-limit: 5 # 限制同时开启的 PR 数量，避免太多
