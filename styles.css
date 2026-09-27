@@ -119,3 +119,18 @@
         transform: translateY(0);
     }
 }
+/* 确保所有导航链接样式统一 */
+.nav-link {
+    text-decoration: none; /* 去掉下划线 */
+    color: inherit; /* 继承父级颜色，保证和别的菜单一样 */
+    font-size: inherit; /* 保证字号一样大 */
+    display: inline-block; 
+    padding: 10px 0; /* 增加一点上下点击区域，和别的菜单手感一致 */
+    margin: 0 15px; /* 左右间距，你可以根据实际情况调整这个数值 */
+    cursor: pointer;
+}
+
+/* 鼠标悬停时的效果，最好也和别的菜单保持一致 */
+.nav-link:hover {
+    opacity: 0.7; /* 或者改成你网站特有的高亮色 */
+}
