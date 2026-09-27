@@ -58,14 +58,31 @@ a {
 }
 .desktop-nav {
   display: flex;
-  align-items: center;
-  gap: 20px;
+  align-items: center; /* 强制垂直居中，解决高低不平 */
+  justify-content: center; /* 水平居中 */
+  gap: 24px; /* 间距 */
   color: #85808b;
   font-size: 16px;
-  flex-wrap: nowrap;
+  flex-wrap: nowrap; /* 强制不换行 */
 }
-.desktop-nav a {
-  transition: 0.25s;
+
+/* 统一所有链接和按钮的样式 */
+.desktop-nav a,
+.desktop-nav button,
+.desktop-nav .nav-link {
+  margin: 0 !important; /* 清除所有外边距 */
+  padding: 0 !important; /* 清除内边距，防止撑开高度 */
+  line-height: 1; /* 锁定行高 */
+  text-decoration: none;
+  color: inherit; /* 继承父级颜色 */
+  display: inline-flex; /* 内部也使用 Flex 对齐 */
+  align-items: center;
+  white-space: nowrap; /* 禁止文字换行 */
+}
+
+.desktop-nav a:hover,
+.desktop-nav .active {
+  color: var(--ink);
 }
 .desktop-nav a:hover,
 .desktop-nav .active {
@@ -678,25 +695,33 @@ footer a:hover {
 .nav-link:hover {
   opacity: 0.7; /* 或者改成你网站特有的高亮色 */
 }
-/* --- 手机端菜单强制对齐修复 --- */
+/* --- 手机端菜单强制修复 --- */
 @media (max-width: 768px) {
-  /* 1. 找到承载菜单的容器（根据你的截图，可能是 .mobile-nav 或 ul） */
-  /* 这里假设你的菜单项都在一个列表里 */
-  .mobile-nav a,
-  .nav-list a,
-  #openSearchBtn {
-    display: block !important; /* 强制占满一行 */
-    text-align: left !important; /* 强制文字靠左 */
-    padding-left: 0 !important; /* 【关键】清除左侧缩进 */
-    margin-left: 0 !important; /* 【关键】清除左侧外边距 */
-    width: 100%; /* 宽度拉满 */
-    box-sizing: border-box; /* 防止宽度计算溢出 */
+  /* 1. 找到承载菜单的容器，强制它变成垂直列表 */
+  .desktop-nav {
+    flex-direction: column !important; /* 强制垂直排列 */
+    align-items: flex-start !important; /* 强制左对齐 */
+    gap: 0 !important; /* 清除间距，用 padding 控制 */
+    width: 100%;
+    padding: 20px 0;
   }
 
-  /* 2. 如果“搜索”是在 <li> 里，也要把 li 的缩进清掉 */
-  .mobile-nav li,
-  .nav-list li {
-    padding-left: 0 !important;
-    margin-left: 0 !important;
+  /* 2. 让所有菜单项（包括搜索）都占满一行并左对齐 */
+  .desktop-nav a,
+  .desktop-nav .nav-link {
+    display: block !important; /* 强制占满一行 */
+    width: 100% !important; /* 宽度拉满 */
+    text-align: left !important; /* 文字靠左 */
+    padding: 15px 24px !important; /* 设置统一的上下左右内边距 */
+    margin: 0 !important; /* 清除所有外边距 */
+    box-sizing: border-box; /* 防止宽度计算溢出 */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05); /* 可选：加个淡淡的分割线 */
+  }
+
+  /* 3. 如果“搜索”之前有特殊的 ID 样式，这里也要覆盖掉 */
+  #openSearchBtn {
+    width: 100% !important;
+    text-align: left !important;
+    padding: 15px 24px !important;
   }
 }
