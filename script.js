@@ -16,7 +16,7 @@ document.querySelectorAll(".desktop-nav a").forEach((link) => {
 document.addEventListener("DOMContentLoaded", function () {
   // 1. 获取弹窗相关元素
   const modal = document.getElementById("searchModal");
-  const openBtn = document.getElementById("openSearchBtn");
+  const openBtn = document.querySelector(".search-trigger");
   const closeBtn = document.getElementById("closeSearchBtn");
   const input = document.getElementById("modalSearchInput");
   const resultsContainer = document.getElementById("searchResults");
@@ -26,32 +26,31 @@ document.addEventListener("DOMContentLoaded", function () {
   const items = document.querySelectorAll(".searchable-item");
 
   // 2. 打开/关闭弹窗逻辑
-  if (openBtn) {
-    openBtn.addEventListener("click", () => {
-      modal.classList.add("active");
-      setTimeout(() => input.focus(), 100); // 稍微延迟聚焦，体验更好
-    });
-  }
+  const closeSearch = () => {
+    modal.classList.remove("active");
+    input.value = "";
+    resultsContainer.innerHTML = "";
+  };
 
-  if (closeBtn) {
-    closeBtn.addEventListener("click", () => {
-      modal.classList.remove("active");
-      input.value = "";
-      resultsContainer.innerHTML = "";
-    });
-  }
+  openBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+    modal.classList.add("active");
+    setTimeout(() => input.focus(), 100); // 稍微延迟聚焦，体验更好
+  });
+
+  closeBtn.addEventListener("click", closeSearch);
 
   // 点击遮罩层空白处也可以关闭
   modal.addEventListener("click", (e) => {
     if (e.target === modal) {
-      modal.classList.remove("active");
+      closeSearch();
     }
   });
 
   // 按 ESC 键关闭
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && modal.classList.contains("active")) {
-      modal.classList.remove("active");
+      closeSearch();
     }
   });
 

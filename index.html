@@ -27,7 +27,9 @@
         <a href="#articles">文章</a>
         <a href="#categories">分类</a>
         <a href="#about">关于我</a>
-        <a href="javascript:void(0)" class="search-trigger">搜索</a>
+        <a href="#search" class="search-trigger" aria-controls="searchModal"
+          >搜索</a
+        >
       </nav>
       <button class="menu-toggle" aria-label="打开菜单" aria-expanded="false">
         ☰
@@ -211,11 +213,24 @@
     </footer>
     <script src="script.js"></script>
     <!-- 👇 搜索弹窗层 (默认隐藏) -->
-    <div id="searchModal" class="search-modal-overlay">
+    <div
+      id="searchModal"
+      class="search-modal-overlay"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="searchModalTitle"
+    >
       <div class="search-modal-content">
         <div class="search-header">
-          <span>搜索</span>
-          <span id="closeSearchBtn" class="close-icon">×</span>
+          <span id="searchModalTitle">搜索</span>
+          <button
+            type="button"
+            id="closeSearchBtn"
+            class="close-icon"
+            aria-label="关闭搜索"
+          >
+            ×
+          </button>
         </div>
         <input
           type="text"

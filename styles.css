@@ -607,10 +607,13 @@ footer a:hover {
 }
 
 .close-icon {
+  border: 0;
+  background: transparent;
   cursor: pointer;
   font-size: 28px;
   color: #999;
   line-height: 1;
+  padding: 0;
 }
 .close-icon:hover {
   color: #333;
@@ -719,7 +722,7 @@ footer a:hover {
   }
 
   /* 3. 如果“搜索”之前有特殊的 ID 样式，这里也要覆盖掉 */
-  #openSearchBtn {
+  .search-trigger {
     width: 100% !important;
     text-align: left !important;
     padding: 15px 24px !important;
