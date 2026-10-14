@@ -46,12 +46,14 @@ a {
   letter-spacing: -0.03em;
 }
 .brand-mark {
-  width: 31px;
-  height: 31px;
-  border-radius: 10px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
   display: block;
   object-fit: cover;
-  object-position: center 22%;
+  object-position: center;
+  image-rendering: auto;
+  box-shadow: 0 2px 8px rgba(33, 29, 43, 0.16);
 }
 .desktop-nav {
   display: flex;
