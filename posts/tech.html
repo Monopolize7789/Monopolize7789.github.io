@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Monopolize 的技术文章目录。" />
+    <title>技术与代码 · Monopolize</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --ink: #211d2b;
+        --muted: #77727f;
+        --cream: #faf8f4;
+        --purple: #7260d8;
+        --line: #e7e2dc;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        min-height: 100vh;
+        margin: 0;
+        color: var(--ink);
+        background: var(--cream);
+        font-family: "DM Sans", "Noto Sans SC", sans-serif;
+      }
+
+      .page-header {
+        position: relative;
+        overflow: hidden;
+        padding: 42px max(7vw, 24px) 94px;
+        background: linear-gradient(125deg, #e7e1f7, #f9e2d0 68%, #f8eee8);
+      }
+
+      .page-header::after {
+        position: absolute;
+        right: 7%;
+        bottom: -230px;
+        width: 470px;
+        height: 470px;
+        border: 1px solid rgba(114, 96, 216, 0.22);
+        border-radius: 50%;
+        content: "";
+      }
+
+      .back-link {
+        position: relative;
+        z-index: 1;
+        display: inline-flex;
+        gap: 8px;
+        align-items: center;
+        color: var(--purple);
+        font-size: 14px;
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      .heading {
+        position: relative;
+        z-index: 1;
+        max-width: 1080px;
+        margin: 82px auto 0;
+      }
+
+      .eyebrow {
+        margin: 0 0 18px;
+        color: var(--purple);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.2em;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(42px, 7vw, 76px);
+        line-height: 1.08;
+        letter-spacing: 0;
+      }
+
+      .intro {
+        max-width: 560px;
+        margin: 24px 0 0;
+        color: #6e6975;
+        font-size: 16px;
+        line-height: 1.9;
+      }
+
+      .article-area {
+        position: relative;
+        z-index: 2;
+        max-width: 1080px;
+        margin: -42px auto 90px;
+        padding: 0 24px;
+      }
+
+      .article-card {
+        display: grid;
+        grid-template-columns: 245px 1fr;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: #fff;
+        box-shadow: 0 18px 45px rgba(42, 29, 66, 0.09);
+        transition:
+          transform 0.25s,
+          box-shadow 0.25s;
+      }
+
+      .article-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 22px 52px rgba(42, 29, 66, 0.14);
+      }
+
+      .card-visual {
+        position: relative;
+        min-height: 245px;
+        overflow: hidden;
+        padding: 22px;
+        background: linear-gradient(135deg, #8071df, #433678);
+      }
+
+      .card-number {
+        color: rgba(255, 255, 255, 0.75);
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      .symbol {
+        position: absolute;
+        right: 22px;
+        bottom: -22px;
+        color: rgba(255, 255, 255, 0.9);
+        font-family: serif;
+        font-size: 145px;
+        line-height: 1;
+        transform: rotate(-18deg);
+      }
+
+      .card-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 34px 42px;
+      }
+
+      .card-meta {
+        margin: 0 0 14px;
+        color: var(--purple);
+        font-size: 12px;
+      }
+
+      h2 {
+        margin: 0 0 12px;
+        font-size: clamp(24px, 4vw, 34px);
+        line-height: 1.35;
+      }
+
+      .card-body p:not(.card-meta) {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.8;
+      }
+
+      .read-link {
+        display: inline-flex;
+        gap: 10px;
+        align-items: center;
+        align-self: flex-start;
+        margin-top: 25px;
+        color: var(--ink);
+        font-size: 13px;
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      .read-link span {
+        color: var(--purple);
+        font-size: 20px;
+        transition: transform 0.2s;
+      }
+
+      .read-link:hover span {
+        transform: translateX(4px);
+      }
+
+      .future-note {
+        margin: 24px 0 0;
+        padding: 18px 22px;
+        border-left: 3px solid #d9d1f6;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.8;
+      }
+
+      @media (max-width: 680px) {
+        .page-header {
+          padding-bottom: 76px;
+        }
+
+        .heading {
+          margin-top: 64px;
+        }
+
+        .article-card {
+          display: block;
+        }
+
+        .card-visual {
+          min-height: 170px;
+        }
+
+        .card-body {
+          padding: 28px 24px 32px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="page-header">
+      <a class="back-link" href="../index.html#articles">← 返回最近文章</a>
+      <div class="heading">
+        <p class="eyebrow">TECH &amp; CODE</p>
+        <h1>技术与代码</h1>
+        <p class="intro">
+          记录逆向分析、编程实践和学习过程。选择一篇文章，继续探索代码背后的逻辑。
+        </p>
+      </div>
+    </header>
+
+    <main class="article-area">
+      <article class="article-card">
+        <div class="card-visual">
+          <span class="card-number">01</span>
+          <div class="symbol">✦</div>
+        </div>
+        <div class="card-body">
+          <p class="card-meta">CTF · 2026.10.10</p>
+          <h2>CTF 逆向模型</h2>
+          <p>从输入、加密到校验，理解 CTF 逆向题的基本流程与解题思路。</p>
+          <a class="read-link" href="ctf-reverse.html"
+            >阅读全文 <span>→</span></a
+          >
+        </div>
+      </article>
+
+      <p class="future-note">
+        这里会持续收录新的技术文章。以后发布文章时，可以继续沿用上面的卡片样式添加到这个页面。
+      </p>
+    </main>
+  </body>
+</html>
