@@ -122,12 +122,21 @@
         box-shadow: 0 22px 52px rgba(42, 29, 66, 0.14);
       }
 
+      .article-list {
+        display: grid;
+        gap: 24px;
+      }
+
       .card-visual {
         position: relative;
         min-height: 245px;
         overflow: hidden;
         padding: 22px;
         background: linear-gradient(135deg, #8071df, #433678);
+      }
+
+      .card-visual.maze-visual {
+        background: linear-gradient(135deg, #e8a878, #b95d58);
       }
 
       .card-number {
@@ -152,6 +161,18 @@
         flex-direction: column;
         justify-content: center;
         padding: 34px 42px;
+      }
+
+      .maze-glyph {
+        position: absolute;
+        right: 28px;
+        bottom: 18px;
+        color: rgba(255, 248, 221, 0.9);
+        font-family: Consolas, monospace;
+        font-size: 31px;
+        letter-spacing: 0.12em;
+        line-height: 1.25;
+        transform: rotate(-8deg);
       }
 
       .card-meta {
@@ -212,7 +233,7 @@
           margin-top: 64px;
         }
 
-        .article-card {
+        .article-list .article-card {
           display: block;
         }
 
@@ -237,22 +258,38 @@
         </p>
       </div>
     </header>
-
     <main class="article-area">
-      <article class="article-card">
-        <div class="card-visual">
-          <span class="card-number">01</span>
-          <div class="symbol">✦</div>
-        </div>
-        <div class="card-body">
-          <p class="card-meta">CTF · 2026.10.10</p>
-          <h2>CTF 逆向模型</h2>
-          <p>从输入、加密到校验，理解 CTF 逆向题的基本流程与解题思路</p>
-          <a class="read-link" href="ctf-reverse.html"
-            >阅读全文 <span>→</span></a
-          >
-        </div>
-      </article>
+      <div class="article-list">
+        <article class="article-card">
+          <div class="card-visual">
+            <span class="card-number">01</span>
+            <div class="symbol">✦</div>
+          </div>
+          <div class="card-body">
+            <p class="card-meta">CTF · 2026.10.10</p>
+            <h2>CTF 逆向模型</h2>
+            <p>从输入、加密到校验，理解 CTF 逆向题的基本流程与解题思路。</p>
+            <a class="read-link" href="ctf-reverse.html"
+              >阅读全文 <span>→</span></a
+            >
+          </div>
+        </article>
+
+        <article class="article-card">
+          <div class="card-visual maze-visual">
+            <span class="card-number">02</span>
+            <div class="maze-glyph">* 1 1<br />0 0 #</div>
+          </div>
+          <div class="card-body">
+            <p class="card-meta">CTF · 2026.10.10</p>
+            <h2>基于栈内存布局的伪二维数组逆向分析</h2>
+            <p>从反编译代码还原一维地图、坐标逻辑与迷宫路线。</p>
+            <a class="read-link" href="ctf-maze.html"
+              >阅读全文 <span>→</span></a
+            >
+          </div>
+        </article>
+      </div>
 
       <p class="future-note">这里会持续收录新的技术文章</p>
     </main>
